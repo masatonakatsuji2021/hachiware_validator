@@ -192,23 +192,23 @@ Below is a list of preset rules
 |[any](#rule_any)|string (or number)|〇|-|Error judgment if the value does not exist in the default value list.|
 |[date](#rule_date)|string|-|-||
 |[minDate](#rule_minDate)|string|〇|-|||
-|[@minDateToday](#rule_minDateToday)|string|〇※1|-||
+|[minDateToday](#rule_minDateToday)|string|〇※1|-||
 |[maxDate](#rule_maxDate)|string|〇|-||
-|[maxDateToday](#rule_maxDateToday)|〇※1|-||
-|[betweenDate](#rule_betweenDate)|〇|〇||
-|[time](#rule_time)|-|-||
-|[minTime](#rule_minTime)|〇|-||
-|[maxTime](#rule_maxTime)|〇|-||
-|[betweenTime](#rule_betweenTime)|〇|〇||
-|[isInt](#rule_isInt)|-|-||
-|[isBool](#rule_isBool)|-|-||
-|[isEmail](#rule_isEmail)|-|-||
-|[isTel](#rule_isTel)|-|-||
-|[isIp](#rule_isIp)|-|-||
-|[isUrl](#rule_isUrl)|-|-||
-|[regex](#rule_regex)|〇|-||
-|[isJpZip](#rule_isJpZip)|〇※1|-||
-|[isJpKatakana](#rule_isJpKatakana)|〇※1|-||
+|[maxDateToday](#rule_maxDateToday)|string|〇※1|-||
+|[betweenDate](#rule_betweenDate)|string|〇|〇||
+|[time](#rule_time)|string|-|-||
+|[minTime](#rule_minTime)|string|〇|-||
+|[maxTime](#rule_maxTime)|string|〇|-||
+|[betweenTime](#rule_betweenTime)|string|〇|〇||
+|[isInt](#rule_isInt)|string|-|-||
+|[isBool](#rule_isBool)|string|-|-||
+|[isEmail](#rule_isEmail)|string|-|-||
+|[isTel](#rule_isTel)|string|-|-||
+|[isIp](#rule_isIp)|string|-|-||
+|[isUrl](#rule_isUrl)|string|-|-||
+|[regex](#rule_regex)|string|〇|-||
+|[isJpZip](#rule_isJpZip)|string|〇※1|-||
+|[isJpKatakana](#rule_isJpKatakana)|string|〇※1|-||
 
 <a id="rule_required"></a>
 
@@ -375,34 +375,155 @@ code:[
 
 ### - value
 
+If the value is not the same as the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+Only 200 numbers (or strings) are allowed in the following cases.
+
+```javascript
+number:[
+    "value|200",
+],
+```
+
 <a id="rule_minValue"></a>
 
 ### - minValue
+
+If the value is smaller than the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+Only numbers (or strings) greater than or equal to 10 are allowed in the following cases
+
+```javascript
+number:[
+    "minValue|10",
+],
+```
 
 <a id="rule_maxValue"></a>
 
 ### - maxValue
 
+If the value is larger than the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+Only numbers (or strings) less than or equal to 200 are allowed in the following cases
+
+```javascript
+number:[
+    "maxValue|200",
+],
+```
+
 <a id="rule_betweenValue"></a>
 
+### - betweenValue
+
+If the value is not within the specified range, an error is judged.  
+Be sure to set the specified values (minimum value and maximum value) in the argument.
+
+Only numbers (or strings) in the range 10-200 are allowed in the following cases
+
+```javascript
+number:[
+    "maxValue|200",
+],
+```
+
+<a id="rule_selectedCount"></a>
+
 ### - selectedCount
+
+Array of values If the number of values is other than the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+In the following cases, it is allowed only when the number of array values of values is four.
+
+```javascript
+selects:[
+    "selectedCound|4",
+],
+```
 
 <a id="rule_minSelectedCount"></a>
 
 ### - minSelectedCount
 
+If the number of values is less than the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+In the following cases, it is allowed only when the number of array values of values is 3 or more.
+
+```javascript
+selects:[
+    "minSelectedCound|3",
+],
+```
+
 <a id="rule_maxSelectedCount"></a>
 
 ### - maxSelectedCount
+
+
+If the number of values is greater than the specified value, an error is judged.  
+Be sure to set the specified value in the argument.
+
+In the following cases, it is allowed only when the number of array values of values is 8 or less.
+
+```javascript
+selects:[
+    "maxSelectedCound|8",
+],
+```
 
 <a id="rule_betweenSelectedCount"></a>
 
 ### - betweenSelectedCount	
 
+Array of values If the number of values is not within the specified value range, an error is judged.  
+Be sure to set the specified values (Minimum number and maximum number) in the argument.
+
+In the following cases, it is allowed only when the number of array values of values is between 3 and 8.
+
+```javascript
+selects:[
+    "betweenSelectedCount|3,8",
+],
+```
+
 <a id="rule_like"></a>
 
 ### ^ like
 
+If the specified value is not included in the value, an error is determined.    
+The value is a string or a number. (Excluding array values)
+
+In the following cases, it is allowed only when the value (string) contains "have to".
+
+```javascript
+memo:{
+    "like:have to",
+},
+```
+
 <a id="rule_any"></a>
 
 ### - any
+
+If the value is not included in the specified value (list) candidates, an error is judged.  
+It is used for the purpose of preventing undefined values from being entered in status etc.
+
+In the following cases, allow only if the value is one of "apple, orange, kiwi".
+
+```javascript
+favorite_food:{
+    "any:apple,orange,kiwi",
+},
+```
+
+### - date
+
+### - minDate
+
+### - minDateToday
