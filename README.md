@@ -292,7 +292,7 @@ First of all, if you normally allow only half-width numeric characters, specify 
 No arguments.
 
 ```javascript
-username:[
+tel:[
     "numeric",
 ],
 ```
@@ -302,7 +302,7 @@ In the case of this rule, if you use half-width spaces or other special characte
 To enable permission even if some special characters are included, list only the permitted characters as arguments as shown below.
 
 ```javascript
-username:[
+tel:[
     "numeric| ,+,-,=",
 ],
 ```
@@ -314,17 +314,62 @@ This will allow half-width spaces and special characters (+, -, =).
 
 ### - length
 
+Judges an error if the string length of the value is not the specified value.  
+Be sure to set the specified length in the argument.
+
+In the following cases, only a 20-character string is allowed.
+
+```javascript
+code:[
+    "length|20",
+],
+```
+
 <a id="rule_minLength"></a>
 
 ### - minLength
+
+
+If the length of the value string is less than the specified value, an error is determined.  
+Be sure to set the specified length for the argument.
+
+In the following cases, only strings of 5 or more characters are allowed.
+
+```javascript
+code:[
+    "minLength|5",
+],
+```
 
 <a id="rule_maxLength"></a>
 
 ### - maxLength
 
+If the length of the value string is long than the specified value, an error is determined.  
+Be sure to set the specified length for the argument.
+
+In the following cases, only strings of 50 characters or less are allowed.
+
+```javascript
+code:[
+    "maxLength|50",
+],
+```
+
 <a id="rule_betweenLength"></a>
 
 ### - betweenLength
+
+If the length of the value string is outside the specified range, an error is determined.  
+Be sure to set the specified range (minimum value and maximum value) for the argument.  
+
+In the following cases, only strings of 5 to 50 characters are allowed.
+
+```javascript
+code:[
+    "betweenLength|5,50",
+],
+```
 
 <a id="rule_value"></a>
 
