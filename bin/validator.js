@@ -125,7 +125,7 @@ const validator = function(context){
                         ruleStr = "rule=[FUNCTION]";
                     }
                     else{
-                        ruleStr = "rule=\"" + ruleList[0].toString() + "\"";
+                        ruleStr = "rule=" + ruleList[0].toString() + "";
                     }
                     
                     if(args.length){
@@ -137,7 +137,6 @@ const validator = function(context){
                             argStr += args[n];
                         }
                         argStr += "]";
-                        message = "index=" + ruleField + ", rule=[FUNCTION] " + argStr;
                     }
 
                     message = "index=" + ruleField + ", " + ruleStr + argStr;
@@ -149,9 +148,7 @@ const validator = function(context){
                         response[field]=[];
                     }
 
-                    if(!option.oneOutput){
-                        response[field].push(message);    
-                    }
+                    response[field].push(message);    
                 }
             }
         }

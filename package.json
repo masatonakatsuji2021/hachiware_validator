@@ -1,0 +1,27 @@
+{
+  "name": "hachiware_validator",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r     <img alt=\"hachiware server\" src=\"https://github.com/masatonakatsuji2021/hachiware_validator/raw/master/logo.png\" alt=\"hachiware validator\">\r </p>",
+  "main": "index.js",
+  "bin": {
+    "hachiware_validator": "response.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masatonakatsuji2021/hachiware_validator.git"
+  },
+  "keywords": [
+    "javascript",
+    "validator",
+    "validate"
+  ],
+  "author": "Nakatsuji Masato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masatonakatsuji2021/hachiware_validator/issues"
+  },
+  "homepage": "https://github.com/masatonakatsuji2021/hachiware_validator#readme"
+}
