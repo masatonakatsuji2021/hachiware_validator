@@ -3,12 +3,12 @@ const rules = require("./bin/rule.js");
 const response = require("./bin/response.js");
 const fs = require("fs");
 
-module.exports = function(rootPath){
+module.exports = function(){
 
     var str = "";
-    str += "const validator = " + validator.toString() + ";\n";
-    str += "const ValidateRule = " + rules.toString() + ";\n";
-    str += "const ValidatorResponse = " + response.toString() + ";\n"
+    str += "const HachiwareValidator = " + validator.toString() + ";\n";
+    str += "const HachiwareValidatorRule = " + rules.toString() + ";\n";
+    str += "const HachiwareValidatorResponse = " + response.toString() + ";\n"
 
-    fs.writeFileSync(rootPath, str);
+    return str;
 };

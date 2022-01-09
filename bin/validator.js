@@ -1,5 +1,5 @@
-const ValidateRule = require("./rule.js");
-const ValidatorResponse = require("./response.js");
+const HachiwareValidatorRule = require("./rule.js");
+const HachiwareValidatorResponse = require("./response.js");
 
 const validator = function(context){
 
@@ -38,9 +38,14 @@ const validator = function(context){
         if(rules){
             targetRules = rules;
         }
+        else{
+            if(context.rules){
+                targetRules = context.rules;
+            }
+        }
 
-        var validateRule = new ValidateRule(data);
-        var response = new ValidatorResponse();
+        var validateRule = new HachiwareValidatorRule(data);
+        var response = new HachiwareValidatorResponse();
 
         var colum = Object.keys(targetRules);
         for(var n = 0 ; n < colum.length ; n++){
@@ -97,6 +102,11 @@ const validator = function(context){
                 }
 
                 var ruleList = rule.rule;
+
+                if(typeof ruleList == "string"){
+                    ruleList = [ruleList];
+                }
+                
                 var args = arrayShift(rule.rule);
 /*
                 console.log(ruleList);

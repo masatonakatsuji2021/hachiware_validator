@@ -16,8 +16,8 @@ const ValidateRule = function(data){
 			var target = name;
 		}
 
-		if(target.substring(0,1) == "@"){
-			var field = target.substring(1);
+		if(target.toString().substring(0,1) == "@"){
+			var field = target.toString().substring(1);
 			res = data[field];
 		}
 
