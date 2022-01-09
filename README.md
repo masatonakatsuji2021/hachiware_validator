@@ -190,25 +190,26 @@ Below is a list of preset rules
 |[betweenSelectedCount](#rule_betweenSelectedCount)|Array|〇|〇|If the list is out of the specified number, error judgment.|
 |[like](#rule_like)|string|〇|-|Error judgment if the specified character string does not exist.|
 |[any](#rule_any)|string (or number)|〇|-|Error judgment if the value does not exist in the default value list.|
-|[date](#rule_date)|string|-|-||
-|[minDate](#rule_minDate)|string|〇|-|||
-|[minDateToday](#rule_minDateToday)|string|〇※1|-||
-|[maxDate](#rule_maxDate)|string|〇|-||
-|[maxDateToday](#rule_maxDateToday)|string|〇※1|-||
-|[betweenDate](#rule_betweenDate)|string|〇|〇||
-|[time](#rule_time)|string|-|-||
-|[minTime](#rule_minTime)|string|〇|-||
-|[maxTime](#rule_maxTime)|string|〇|-||
-|[betweenTime](#rule_betweenTime)|string|〇|〇||
-|[isInt](#rule_isInt)|string|-|-||
-|[isBool](#rule_isBool)|string|-|-||
-|[isEmail](#rule_isEmail)|string|-|-||
-|[isTel](#rule_isTel)|string|-|-||
-|[isIp](#rule_isIp)|string|-|-||
-|[isUrl](#rule_isUrl)|string|-|-||
-|[regex](#rule_regex)|string|〇|-||
-|[isJpZip](#rule_isJpZip)|string|〇※1|-||
-|[isJpKatakana](#rule_isJpKatakana)|string|〇※1|-||
+|[date](#rule_date)|string|-|-|Error judgment for values other than date format.|
+|[minDate](#rule_minDate)|string|〇|-||Error judgment if the value is earlier than the specified date.|
+|[minDateToday](#rule_minDateToday)|string|〇※1|-|Error judgment if the value is earlier than the current date.<br>It is also possible to judge by the date n days after the current day with the argument.|
+|[maxDate](#rule_maxDate)|string|〇|-|Error judgment if the value is after the specified date.|
+|[maxDateToday](#rule_maxDateToday)|string|〇※1|-|Error judgment when the value is later than the current date.<br>It is also possible to judge by the date n days after the current day with the argument.|
+|[betweenDate](#rule_betweenDate)|string|〇|〇|Error judgment if outside the specified date range.|
+|[time](#rule_time)|string|-|-|Error judgment if the value does not appear in the time format.|
+|[minTime](#rule_minTime)|string|〇|-|Error judgment if the time is earlier than the specified time.|
+|[maxTime](#rule_maxTime)|string|〇|-|Error judgment if the time is later than the specified time.|
+|[betweenTime](#rule_betweenTime)|string|〇|〇|Error judgment if outside the specified time range.|
+|[isInt](#rule_isInt)|string|-|-|Error judgment if it is not in the form of an integer value.|
+|[isBool](#rule_isBool)|string|-|-|Error judgment if not Boolean.|
+|[isEmail](#rule_isEmail)|string|-|-|Error judgment if not in email format.|
+|[isTel](#rule_isTel)|string|-|-|Error judgment if not in phone number format.|
+|[isIp](#rule_isIp)|string|-|-|Error judgment if not in IP address format.|
+|[isUrl](#rule_isUrl)|string|-|-|Error judgment if not in URL format.|
+|[regex](#rule_regex)|string|〇|-|Error judgment if it is not the specified regular expression.|
+|[isJpZip](#rule_isJpZip)|string|-|-|Error judgment if not in Japanese postal code format.|
+|[isJpKatakana](#rule_isJpKatakana)|string|〇※1|-|Error judgment if not in Japanese full-width katakana format.<br>However, if the character specified by specifying the option value is included, it is allowed.|
+|[isJpHiragana](#rule_isJpHiragana)|string|〇※1|-|Error judgment if it is not in Japanese full-width hiragana format.<br>However, if the character specified by specifying the option value is included, it is allowed.|
 
 <a id="rule_required"></a>
 
@@ -522,8 +523,66 @@ favorite_food:{
 },
 ```
 
+<a id="rule_date"></a>
+
 ### - date
 
 ### - minDate
 
 ### - minDateToday
+
+### - maxDate
+
+### - maxDateToday
+
+### - betweenTime
+
+### - betweenDate
+
+### - time
+
+### - minTime
+
+### - maxTime
+
+### - betweenTime
+
+### - isInt
+
+### - isBool
+
+### - isEmail
+
+### - isTel
+
+### - isIp
+
+### - isUrl
+
+### - regex
+
+### - isJpZip
+
+### - isJpKatakana
+
+### - isJpHiragana
+
+
+---
+
+## # Passing the input data of the rule setting value by reference
+
+Apart from setting the rule setting value fixedly, it can also be changed dynamically by referencing the input data.
+
+To refer to the input data value, prefix it with ``@`` and specify the column name where the input data is located.
+
+For example, if you specify as below, the value of nameMaxLen will be the set value of maxLength on the input data.
+
+```javascript
+name: [
+    "maxLength|@nameMaxLen",
+],
+```
+
+This pass by reference is available for almost all preset rules.
+
