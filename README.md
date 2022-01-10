@@ -527,46 +527,109 @@ favorite_food:{
 
 ### - date
 
+Comming Soon...!
+
+<a id="rule_minDate"></a>
+
 ### - minDate
+
+Comming Soon...!
+
+<a id="rule_minDateToday"></a>
 
 ### - minDateToday
 
+Comming Soon...!
+
+<a id="rule_maxDate"></a>
+
 ### - maxDate
+
+Comming Soon...!
+
+<a id="rule_maxDateToday"></a>
 
 ### - maxDateToday
 
+Comming Soon...!
+
+<a id="rule_betweenTime"></a>
+
 ### - betweenTime
+
+Comming Soon...!
+
+<a id="rule_betweenDate"></a>
 
 ### - betweenDate
 
+Comming Soon...!
+
+<a id="rule_time"></a>
+
 ### - time
+
+Comming Soon...!
+
+<a id="rule_minTime"></a>
 
 ### - minTime
 
+Comming Soon...!
+
+<a id="rule_maxTime"></a>
+
 ### - maxTime
+
+Comming Soon...!
+
+<a id="rule_betweenTime"></a>
 
 ### - betweenTime
 
+Comming Soon...!
+
+<a id="rule_isInt"></a>
+
 ### - isInt
+
+Comming Soon...!
 
 ### - isBool
 
+Comming Soon...!
+
 ### - isEmail
+
+Comming Soon...!
 
 ### - isTel
 
+Comming Soon...!
+
 ### - isIp
+
+Comming Soon...!
 
 ### - isUrl
 
+Comming Soon...!
+
 ### - regex
+
+Comming Soon...!
 
 ### - isJpZip
 
+Comming Soon...!
+
 ### - isJpKatakana
+
+Comming Soon...!
 
 ### - isJpHiragana
 
+Comming Soon...!
 
 ---
 

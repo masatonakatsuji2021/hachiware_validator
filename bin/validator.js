@@ -45,7 +45,8 @@ const validator = function(context){
         }
 
         var validateRule = new HachiwareValidatorRule(data);
-        var response = new HachiwareValidatorResponse();
+
+        var resBuffer = {};
 
         var colum = Object.keys(targetRules);
         for(var n = 0 ; n < colum.length ; n++){
@@ -108,11 +109,7 @@ const validator = function(context){
                 }
                 
                 var args = arrayShift(rule.rule);
-/*
-                console.log(ruleList);
-                console.log(data);
-                console.log(field);
-*/
+
                 var jugement=true;
                 if(typeof ruleList[0] === "function"){
                     jugement = ruleList[0](data[field], args);
@@ -154,14 +151,16 @@ const validator = function(context){
 
                 if(!jugement){
                     
-                    if(!response[field]){
-                        response[field]=[];
+                    if(!resBuffer[field]){
+                        resBuffer[field]=[];
                     }
 
-                    response[field].push(message);    
+                    resBuffer[field].push(message);    
                 }
             }
         }
+
+        var response = new HachiwareValidatorResponse(resBuffer);
 
         return response;
     };
@@ -174,11 +173,13 @@ const validator = function(context){
      * @returns 
      */
     this.addRule=function(field, rule, message){
-        var Length=0;
-        if(_rules[field]){
-            Length=Object.keys(_rules[field]).length;
+        var Length = 0;
+        if(context.rules){
+            if(context.rules[field]){
+                Length = Object.keys(context.rules[field]).length;
+            }    
         }
-        return this.addRuleWithIndex(Length,field,rule,message);
+        return this.addRuleWithIndex(Length, field, rule, message);
     };
 
     /**
@@ -189,19 +190,22 @@ const validator = function(context){
      * @param {*} message 
      * @returns 
      */
-    this.addRuleWithIndex=function(indexName,field,rule,message){
+    this.addRuleWithIndex=function(indexName, field, rule, message){
 
-        if(!_rules[field]){
-            _rules[field]={};
+        if(!context.rules){
+            context.rules = {};
+        }
+        if(!context.rules[field]){
+            context.rules[field] = {};
         }
 
-        var values={};
-        values.rule=rule;
+        var values = {};
+        values.rule = rule;
         if(message){
-            values.message=message;
+            values.message = message;
         }
 
-        _rules[field][indexName]=values;
+        context.rules[field][indexName] = values;
 
         return this;
     };
@@ -212,13 +216,13 @@ const validator = function(context){
      * @param {*} index 
      * @returns 
      */
-    this.deleteRule=function(field,index){
+    this.deleteRule=function(field, index){
 
-        if(index==undefined){
-            delete _rules[field];
+        if(index == undefined){
+            delete context.rules[field];
         }
         else{
-            delete _rules[field][index];
+            delete context.rules[field][index];
         }
 
         return this;
