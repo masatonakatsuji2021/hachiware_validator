@@ -1,6 +1,6 @@
 {
   "name": "hachiware_validator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "<p align=\"center\">\r     <img alt=\"hachiware server\" src=\"https://github.com/masatonakatsuji2021/hachiware_validator/raw/master/logo.png\" alt=\"hachiware validator\">\r </p>",
   "main": "index.js",
   "scripts": {
