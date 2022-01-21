@@ -652,3 +652,12 @@ name: [
 
 This pass by reference is available for almost all preset rules.
 
+---
+
+hachiware_validator
+ 
+License : MIT License.   
+Author  : Nakatsuji Masato  
+HP URL  : [https://hachiware-js.com/](https://hachiware-js.com/)  
+GitHub  : [https://github.com/masatonakatsuji2021/hachiware_validator](https://github.com/masatonakatsuji2021/hachiware_validator)  
+npm     : [https://www.npmjs.com/package/hachiware_validator](https://www.npmjs.com/package/hachiware_validator)
