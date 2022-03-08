@@ -153,11 +153,11 @@ const validator = function(context){
                     
                     if(args.length){
                         var argStr = " args=[";
-                        for(var n = 0 ; n < args.length ; n++){
-                            if(n != 0){
+                        for(var n3 = 0 ; n3 < args.length ; n3++){
+                            if(n3 != 0){
                                 argStr += ", ";
                             }
-                            argStr += args[n];
+                            argStr += args[n3];
                         }
                         argStr += "]";
                     }
