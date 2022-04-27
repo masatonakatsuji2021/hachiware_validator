@@ -52,7 +52,14 @@ const validator = function(context){
 
         var targetRules = _rules;
         if(rules){
-            targetRules = rules;
+            if(typeof rules == "string"){
+                if(this[rules]){
+                    targetRules = this[rules];
+                }
+            }
+            else{
+                targetRules = rules;
+            }
         }
         else{
             if(context.rules){
